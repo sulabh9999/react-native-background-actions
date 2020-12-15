@@ -18,6 +18,18 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.jstasks.HeadlessJsTaskConfig;
 
+// import android.app.Notification;
+// import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+// import android.content.Intent;
+import android.os.Handler;
+import android.os.IBinder;
+// import androidx.core.app.NotificationCompat;
+// import android.app.NotificationManager;
+// import android.app.NotificationChannel;
+// import android.os.Build;
+
 final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
 
     public static final int SERVICE_NOTIFICATION_ID = 92901;
@@ -37,6 +49,12 @@ final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
         } else {
             notificationIntent = new Intent(context, context.getCurrentActivity().getClass());
         }
+
+        
+        final Intent notificationIntent1 = new Intent(context, NotificationAction.class);
+        notificationIntent1.putExtra("action", "action1");
+        PendingIntent contentIntent1 = PendingIntent.getBroadcast(context, 1, notificationIntent1, PendingIntent.FLAG_CANCEL_CURRENT);
+        
         final PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle(taskTitle)
@@ -45,7 +63,8 @@ final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
                 .setContentIntent(contentIntent)
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_MIN)
-                .setColor(color);
+                .setColor(color)
+                .addAction(iconInt, "Connect", contentIntent1);
 
         final Bundle progressBarBundle = bgOptions.getProgressBar();
         if (progressBarBundle != null) {

@@ -101,4 +101,14 @@ public final class BackgroundTaskOptions {
     public Bundle getProgressBar() {
         return extras.getBundle("progressBar");
     }
+
+    @Nullable
+    public String firstButtonTitle() {
+        return extras.getString("firstButtonTitle");
+    }
+
+    @Nullable
+    public String secondButtonTitle() {
+        return extras.getString("secondButtonTitle");
+    }
 }
