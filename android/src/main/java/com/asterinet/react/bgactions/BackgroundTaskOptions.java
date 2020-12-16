@@ -106,9 +106,4 @@ public final class BackgroundTaskOptions {
     public String firstButtonTitle() {
         return extras.getString("firstButtonTitle");
     }
-
-    @Nullable
-    public String secondButtonTitle() {
-        return extras.getString("secondButtonTitle");
-    }
 }

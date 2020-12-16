@@ -1,0 +1,1 @@
+cp -r /home/ram/Documents/madi/miBand/rn-heartbeat/node_modules/react-native-background-actions/android/src/main/* /home/ram/Documents/madi/miBand/react-native-background-actions/android/src/main/

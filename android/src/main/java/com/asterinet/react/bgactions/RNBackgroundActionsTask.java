@@ -62,7 +62,7 @@ final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
                 .setSmallIcon(iconInt)
                 .setContentIntent(contentIntent)
                 .setOngoing(true)
-                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setColor(color)
                 .addAction(iconInt, "Connect", contentIntent1);
 
